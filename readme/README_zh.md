@@ -4,20 +4,15 @@
 
 *一个会持续增厚的个人知识库（personal knowledge base）。*
 
-LLM-Wiki on Hermes 不是另一个 agent framework，也不是另一个 chat wrapper。
-
 它是一个运行在 **Hermes Agent** 之上的知识内核（knowledge kernel）：**Markdown + frontmatter**
 是主真相源（source of truth），**SQLite FTS5** 是可重建索引（rebuildable index），一个
 `wiki` memory provider 会在需要的时候，把合适的知识重新带回当前对话。
 
 核心想法很简单：
 
-很多系统都是等到用户提问时，再去检索几段内容、当场组织答案。这样能工作，但知识本身并不会
-真正积累。同样的综合、归纳、交叉关联，会一遍遍重做。
+很多系统都是等到用户提问时，再去检索几段内容、当场组织答案。这样能工作，但知识本身并不会真正积累。同样的综合、归纳、交叉关联，会一遍遍重做。
 
-这个项目走的是另一条路。新材料进入系统后，不只是被索引（indexed），而是被编译（compiled）
-进一个持续存在的 wiki：稳定概念会变成 semantic notes，具体事件会变成 episodic notes，
-原始材料则作为 source 保留下来，持续可追溯。
+这个项目走的是另一条路。新材料进入系统后，不只是被索引（indexed），而是被编译（compiled）进一个持续存在的 wiki：稳定概念会变成 语义记忆（semantic notes，如概念、原则、常识等），具体事件会变成 经验记忆（episodic notes，如案例、事件等），原始材料则作为 source 保留下来，持续可追溯。
 
 时间一长，这个知识库就不再像一堆文件。它开始更像记忆（memory）。
 
