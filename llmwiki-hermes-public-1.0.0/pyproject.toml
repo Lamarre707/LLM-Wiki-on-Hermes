@@ -1,0 +1,101 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llmwiki-hermes"
+version = "1.0.0"
+description = "LLM-Wiki memory provider and local knowledge system for Hermes Agent."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+keywords = [
+  "hermes",
+  "knowledge-base",
+  "llm",
+  "markdown",
+  "obsidian",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Text Processing :: Markup :: Markdown",
+]
+authors = [
+  { name = "LLM-Wiki on Hermes contributors" }
+]
+dependencies = [
+  "pydantic>=2.7,<3.0",
+  "PyYAML>=6.0",
+  "typer>=0.12,<1.0",
+]
+
+[project.scripts]
+llmwiki-hermes = "llmwiki_hermes.cli:main"
+
+[project.optional-dependencies]
+markitdown = [
+  "markitdown[pdf,docx,pptx,xlsx]>=0.1.0,<0.2.0",
+]
+dev = [
+  "build>=1.2.2",
+  "markitdown[pdf,docx,pptx,xlsx]>=0.1.0,<0.2.0",
+  "mypy>=1.11.0",
+  "pytest>=8.3.0",
+  "ruff>=0.6.0",
+  "twine>=5.1.1",
+  "types-PyYAML>=6.0.12",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llmwiki_hermes"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"plugins/memory/wiki" = "plugins/memory/wiki"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/plugins",
+  "/readme",
+  "/README.md",
+  "/CHANGELOG.md",
+  "/CONTRIBUTING.md",
+  "/LICENSE",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+  "E",
+  "F",
+  "I",
+  "B",
+  "UP",
+]
+ignore = [
+  "B008",
+  "UP006",
+  "UP007",
+  "UP017",
+  "UP035",
+  "UP037",
+]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+pretty = true
+mypy_path = "src"
+packages = ["llmwiki_hermes"]
