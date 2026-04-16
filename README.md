@@ -1,5 +1,9 @@
 # LLM-Wiki on Hermes
 
+<p align="center">
+  <img src="assets/banner.png" alt="LLM-Wiki on Hermes" width="80%">
+</p>
+
 [中文说明](readme/README_zh.md)
 
 *An ever-growing personal knowledge base.*
